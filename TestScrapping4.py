@@ -7,6 +7,6 @@ with urllib.request.urlopen("https://api.watchmode.com/v1/list-titles/?apiKey=sN
 
 movies = json.dumps(data, indent=4)
 print(movies)
-"""file = open('movies.csv', 'a')
+file = open('movies.csv', 'a')
 file.write(movies)
-file.close()"""
+file.close()
