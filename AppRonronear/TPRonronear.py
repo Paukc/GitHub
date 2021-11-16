@@ -5,7 +5,7 @@ Micaela Christmann
 Paula Agüero"""
 
 
-diccionario = {"@Wally": [], "@Benito": []}
+diccionario = {"Wally": [], "Benito": []}
 lista_usuarios = ["Benito", "Wally", "911"]
 lista_tweet = []
 lista_arrobados = []
@@ -48,7 +48,7 @@ class App:
     def listaTweets(self):
         global diccionario
         for i, j in diccionario.items():
-            print(i, ':', j)
+            print('@'+i, ':', j)
 
 
 App1 = App()
@@ -81,7 +81,7 @@ class Benito(Bot):
     def alertar(self, usuario, tweet):
         global diccionario
         alerta = "@911, Sistema de alerta automatica.\n\tusuario: @{0};\n\tTweet: {1}".format(usuario, tweet)
-        diccionario['@Benito'].append(alerta)
+        diccionario['Benito'].append(alerta)
         print(alerta)
 
     def leerTweet(self):
@@ -100,7 +100,7 @@ class Wally(Bot):
     def promocionar(self, usuario, tweet):
         global diccionario
         alerta = "La marca @{0}, te ofrece un 10% en tu proxima compra, para acceder mandanos un privado. @{1}".format(self.dict_marcas.keys(), usuario)
-        diccionario['@Wally'].append(alerta)
+        diccionario['Wally'].append(alerta)
         print(alerta)
 
     def leerTweet(self):
@@ -121,22 +121,24 @@ class Termitator(Bot):
         global tweet
         global lista_arrobados
         global lista_noarrobados
-        print("Ingrese el usuario del que quiere ver la pantalla principal")
+        print("Ingrese el usuario del que quiere ver la pantalla principal:")
         self.usuariosol = input()
-        if self.usuariosol in tweet:
-            for i, j in diccionario.items():
-                for tweet in j:
-                    separado = tweet.split()
-                    if '@' + self.usuariosol in separado:
-                        lista_arrobados.append(tweet)
-                        print("Tweets de la Home del usuario:", lista_arrobados)
-                    else:
-                        print("El usuario ingresado es incorrecto")
-        else:
-            lista_noarrobados.append(tweet)
-
-        print("Tweets de la Home del usuario:", lista_arrobados)
-        print("Tweets que no arroban a nadie:", lista_noarrobados)
+        for i, j in diccionario.items():
+            j = tweet.split(" ")
+            if '@'+self.usuariosol in j:
+                if tweet not in lista_arrobados:
+                    lista_arrobados.append(tweet)
+                    print("Tweets de la Home del usuario:", lista_arrobados)
+                else:
+                    print("Tweets de la Home del usuario:", lista_arrobados)
+            if '@'+self.usuariosol in i:
+                if tweet not in lista_noarrobados:
+                    lista_noarrobados.append(tweet)
+                    print("Tweets que no arroban a nadie:", lista_noarrobados)
+                else:
+                    print("Tweets que no arroban a nadie:", lista_noarrobados)
+            if '@'+self.usuariosol not in i or j:
+                print("El usuario ingresado es incorrecto")
         return lista_arrobados, lista_noarrobados
 
 
