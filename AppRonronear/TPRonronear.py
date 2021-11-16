@@ -67,7 +67,6 @@ class Bot:
             lista_arrobados.append(tweet)
         else:
             lista_noarrobados.append(tweet)
-        return lista_arrobados, lista_noarrobados
 
     def leerTweet(self):
         pass
@@ -142,7 +141,6 @@ class Termitator(Bot):
             if '@'+self.usuariosol not in i:
                 if '@'+self.usuariosol not in j:
                     print("El usuario ingresado es incorrecto")
-        return lista_arrobados, lista_noarrobados
 
 
 Bot1 = Bot("", "")
