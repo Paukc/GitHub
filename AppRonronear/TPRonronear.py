@@ -129,16 +129,19 @@ class Termitator(Bot):
                 if tweet not in lista_arrobados:
                     lista_arrobados.append(tweet)
                     print("Tweets de la Home del usuario:", lista_arrobados)
-                else:
+                elif tweet in lista_arrobados:
                     print("Tweets de la Home del usuario:", lista_arrobados)
+                else:
+                    print("El usuario no ha sido mencionado")
             if '@'+self.usuariosol in i:
                 if tweet not in lista_noarrobados:
                     lista_noarrobados.append(tweet)
                     print("Tweets que no arroban a nadie:", lista_noarrobados)
                 else:
                     print("Tweets que no arroban a nadie:", lista_noarrobados)
-            if '@'+self.usuariosol not in i or j:
-                print("El usuario ingresado es incorrecto")
+            if '@'+self.usuariosol not in i:
+                if '@'+self.usuariosol not in j:
+                    print("El usuario ingresado es incorrecto")
         return lista_arrobados, lista_noarrobados
 
 
