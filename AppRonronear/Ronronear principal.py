@@ -9,6 +9,7 @@ while menu != "0":
         App1.IngresarUsuario()
         Benito1.leerTweet()
         Wally1.leerTweet()
+        Terminator1.guardado()
     elif menu == "2":
         menu2 = input("\t1: Ver todos los tweets\n\t2: Ingresar a home\n\t")
         if menu2 == "1":
@@ -20,3 +21,4 @@ while menu != "0":
     else:
         print("No es una elección valida.")
     menu = input("\n\t1: Entrar a su usuario\n\t2: Listar Tweets\n\t0: Salir\n\t")
+Terminator1.

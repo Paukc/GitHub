@@ -1,8 +1,8 @@
-""" Horwell Murillo
-Ailín Perez
+""" Micaela Christmann
+Paula Agüero
 Flor Frez
-Micaela Christmann
-Paula Agüero"""
+Horwell Murillo
+Ailín Perez"""
 
 
 diccionario = {"Wally": [], "Benito": []}
@@ -132,15 +132,28 @@ class Termitator(Bot):
                     print("Tweets de la Home del usuario:", lista_arrobados)
                 else:
                     print("El usuario no ha sido mencionado")
+
             if '@'+self.usuariosol in i:
                 if tweet not in lista_noarrobados:
                     lista_noarrobados.append(tweet)
                     print("Tweets que no arroban a nadie:", lista_noarrobados)
                 else:
                     print("Tweets que no arroban a nadie:", lista_noarrobados)
+
             if '@'+self.usuariosol not in i:
                 if '@'+self.usuariosol not in j:
                     print("El usuario ingresado es incorrecto")
+
+    def guardado(self):
+        global diccionario
+        with open('App1.txt', 'a') as file:
+            for usuario, tweets in diccionario.items():
+                for tweet in tweets:
+                    linea = '@' + usuario + ' : ' + tweet + '\n'
+                    file.write(linea)
+
+    def uploadguardado(self):
+        file.close()
 
 
 Bot1 = Bot("", "")
